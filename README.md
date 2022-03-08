@@ -1,5 +1,7 @@
 # Frontend
-1. _actions,_reducers : 상태관리 라이브러리인 리덕스 관련 파일 
+1. _actions,_reducers
+ : 상태관리 라이브러리인 리덕스 관련 파일 
+
 _actions - user_action.js에서 node.js 서버와 연결하여 테스트함
 
 2. component : 페이지들을 모아 놓은 폴더
