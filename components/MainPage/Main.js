@@ -1,9 +1,12 @@
 import "./Main.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import Auth from "../../hoc/auth";
+import cookies from "react-cookies";
 const Main = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { id } = location.state;
+  //const { id } = location.state;
+  const Id = cookies.load("Id");
   console.log("state", location.state);
 
   return (
@@ -66,7 +69,7 @@ const Main = () => {
           <div
             className="user"
             onClick={() => {
-              navigate("/mypage", { state: { id: id } });
+              navigate("/mypage", { state: { id: Id } });
             }}
           >
             <img
@@ -74,7 +77,7 @@ const Main = () => {
               alt="user_img"
               src={require("../img/user.png")}
             />
-            <p className="user_id">{id}님</p>
+            <p className="user_id">{Id}님</p>
           </div>
         </div>
         <div className="bookSelect">
@@ -130,4 +133,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Auth(Main, true);

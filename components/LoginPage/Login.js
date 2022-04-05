@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../_actions/user_action";
+import cookies from "react-cookies";
+import Auth from "../../hoc/auth";
+
 const Login = props => {
   const dispatch = useDispatch();
   const [Id, setId] = useState("");
@@ -22,8 +25,10 @@ const Login = props => {
       id: Id,
       password: Password
     };
+
     dispatch(loginUser(body)).then(response => {
       if (response.payload.loginSuccess) {
+        cookies.save("Id", Id, { path: "/" });
         navigate("/main", { state: { id: Id } });
       } else {
         alert("알 수 없는 사용자이거나 암호가 틀립니다.");
@@ -79,4 +84,4 @@ const Login = props => {
     </div>
   );
 };
-export default Login;
+export default Auth(Login, false);

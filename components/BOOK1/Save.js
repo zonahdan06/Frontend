@@ -1,7 +1,29 @@
 import "../css/B1Q1.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import cookies from "react-cookies";
+import axios from "axios";
 const Save = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { page } = location.state;
+  const Id = cookies.load("Id");
+  const onClickHandler = () => {
+    let body = {
+      user_id: Id,
+      page: page,
+      Book_id: "1"
+    };
+
+    axios.post("/api/storage/save", body).then(response => {
+      console.log(response.data);
+      if (response.data.success) {
+        navigate("/main");
+      } else {
+        alert("저장에 실패했습니다.");
+      }
+    });
+  };
+
   return (
     <div className="B1Q1">
       <div>
@@ -15,12 +37,7 @@ const Save = () => {
         <div className="exp">종료하시겠습니까?</div>
         <div className="Content">
           <div className="btn_div">
-            <button
-              className="btn1"
-              onClick={() => {
-                navigate("/main");
-              }}
-            >
+            <button className="btn1" onClick={onClickHandler}>
               저장하고 종료하기
             </button>
           </div>

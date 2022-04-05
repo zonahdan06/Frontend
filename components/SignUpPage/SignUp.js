@@ -39,6 +39,7 @@ const SignUp = props => {
     };
     dispatch(registerUser(body)).then(response => {
       if (response.payload.success) {
+        alert("회원가입 완료.");
         navigate("/login");
       } else {
         alert("회원가입에 실패했습니다.");
@@ -61,7 +62,6 @@ const SignUp = props => {
       }
     });
   };
-
   const navigate = useNavigate();
 
   return (

@@ -8,7 +8,7 @@ const B1Q2 = () => {
         <div
           className="quit"
           onClick={() => {
-            navigate("/Save");
+            navigate("/Save", { state: { page: "B1Q2" } });
           }}
         >
           <img
