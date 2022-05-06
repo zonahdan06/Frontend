@@ -1,5 +1,5 @@
 .B1Q2 {
-  background-color: #002943;
+  background: url("../img/intro.jpg");
   width: 100vw;
   height: 100vh;
 
@@ -52,6 +52,11 @@
   float: left;
 
   border: 0.2rem solid rgb(105, 104, 104);
+}
+.ex_img {
+  width: 20rem;
+
+  height: 20rem;
 }
 .count {
   clear: both;

@@ -31,7 +31,12 @@ const Main = () => {
               <h2>토끼와 거북이</h2>
             </div>
           </div>
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book1"
@@ -41,24 +46,35 @@ const Main = () => {
               <h2>아기돼지 삼형제</h2>
             </div>
           </div>
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book"
-              src={require("../img/book1.png")}
+              src={require("../img/book3.png")}
             />
             <div className="bookTitle">
-              <h2>토끼와 거북이</h2>
+              <h2>피터팬</h2>
             </div>
           </div>
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book1"
-              src={require("../img/book2.png")}
-            />
+              src={require("../img/book4.png")}
+            ></img>
+
             <div className="bookTitle">
-              <h2>아기돼지 삼형제</h2>
+              <h2>신데렐라</h2>
             </div>
           </div>
         </div>
@@ -75,50 +91,70 @@ const Main = () => {
             <img
               className="user_img"
               alt="user_img"
-              src={require("../img/user.png")}
+              src={require("../img/profile.png")}
             />
             <p className="user_id">{Id}님</p>
           </div>
         </div>
         <div className="bookSelect">
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book"
-              src={require("../img/book1.png")}
+              src={require("../img/book5.png")}
             />
             <div className="bookTitle">
-              <h2>토끼와 거북이</h2>
+              <h2>선녀와 나무꾼</h2>
             </div>
           </div>
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book1"
-              src={require("../img/book2.png")}
+              src={require("../img/book6.png")}
             />
             <div className="bookTitle">
-              <h2>아기돼지 삼형제</h2>
+              <h2>미운 오리 새끼</h2>
             </div>
           </div>
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book"
-              src={require("../img/book1.png")}
+              src={require("../img/book7.png")}
             />
             <div className="bookTitle">
-              <h2>토끼와 거북이</h2>
+              <h2>헨젤과 그레텔</h2>
             </div>
           </div>
-          <div className="book">
+          <div
+            className="book"
+            onClick={() => {
+              alert("해당 동화책은 준비중이에요");
+            }}
+          >
             <img
               className="book_img"
               alt="book1"
-              src={require("../img/book2.png")}
+              src={require("../img/book8.png")}
             />
             <div className="bookTitle">
-              <h2>아기돼지 삼형제</h2>
+              <h2>빨간 모자</h2>
             </div>
           </div>
         </div>

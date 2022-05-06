@@ -33,10 +33,10 @@ const MyPage = () => {
             <img
               className="user_img2"
               alt="user_img"
-              src={require("../img/user.png")}
+              src={require("../img/profile.png")}
             />
             <p className="user_id2"> 아이디 : {Id}</p>
-            <p className="user_email"> 이메일 : 000@naver.com</p>
+            <p className="user_email"> 이메일 : aer561@naver.com</p>
             <p className="logout" onClick={onClickHandler}>
               로그아웃
             </p>

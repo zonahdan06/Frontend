@@ -1,13 +1,73 @@
 import "../css/B1Q1.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Q1 from "./sounds/Q1.mp3";
+import again from "./sounds/again.mp3";
+import Q1_s from "./sounds/Q1_select.mp3";
+import Auth from "../../hoc/auth";
+import { useSpeechRecognition } from "react-speech-kit";
+
+const useAudio = url => {
+  const [audio] = useState(new Audio(url));
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = () => setPlaying(!playing);
+
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [playing]);
+
+  useEffect(() => {
+    audio.addEventListener("ended", () => setPlaying(false));
+    return () => {
+      audio.removeEventListener("ended", () => setPlaying(false));
+    };
+  }, []);
+
+  return [audio, playing, toggle];
+};
+
 const B1Q1 = () => {
+  const [audio, playing, toggle] = useAudio(Q1);
   const navigate = useNavigate();
+  const [value, setValue] = useState("");
+  const { listen, listening, stop } = useSpeechRecognition({
+    onResult: result => {
+      // 음성인식 결과가 value 상태값으로 할당됩니다.
+      setValue(result);
+    }
+  });
+  useEffect(() => {
+    toggle();
+  }, []);
+  useEffect(() => {
+    console.log(playing);
+    if (!playing) {
+      listen({ interimResults: false });
+    }
+  }, [playing]);
+  useEffect(() => {
+    if (value.includes("빵빵")) {
+      console.log("빵빵");
+      setTimeout(function() {
+        navigate("/B1Q1_R");
+      }, 2000);
+    } else if (value.includes("콩콩")) {
+      console.log("콩콩");
+    } else {
+    }
+  }, [value]);
+  /*
+  const again = url => {
+    [playing, toggle] = useAudio(url);
+  };*/
   return (
     <div className="B1Q1">
       <div>
         <div
           className="quit"
           onClick={() => {
+            audio.pause();
             navigate("/Save", { state: { page: "B1Q1" } });
           }}
         >
@@ -32,7 +92,7 @@ const B1Q1 = () => {
             <img
               className="img"
               alt="book"
-              src={require("../img/rabbit.png")}
+              src={require("../img/rabbit2.png")}
             />
             <div className="text_r">토끼는 "빵빵"</div>
           </div>
@@ -40,7 +100,7 @@ const B1Q1 = () => {
             <img
               className="img"
               alt="book"
-              src={require("../img/turtle.png")}
+              src={require("../img/turtle2.png")}
             />
             <div className="text_t">거북이는 "콩콩"</div>
           </div>
@@ -51,7 +111,9 @@ const B1Q1 = () => {
               src={require("../img/micro.png")}
             />
           </div>
-          <div className="answer">콩콩</div>
+          <div className="answer">{value}</div>
+
+          {listening && <div className="reco">인식 중</div>}
         </div>
       </div>
     </div>

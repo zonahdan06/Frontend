@@ -1,13 +1,15 @@
 .B1Q1 {
-  background-color: #002943;
+  background: url("../img/intro.jpg");
   width: 100vw;
   height: 100vh;
+  background-size: 100% 100%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .exp {
+  border: solid gray;
   text-align: center;
   padding-bottom: 0;
   padding-top: 1.3rem;
@@ -19,10 +21,11 @@
   font-weight: 700;
 }
 .Content {
+  border: solid gray;
   padding: 1rem;
   text-align: center;
   margin: 3rem;
-  height: 40rem;
+  height: 45rem;
   width: 65rem;
   background-color: white;
   border-radius: 0.5rem;
@@ -36,8 +39,11 @@
 .paint2 {
   margin-left: 15rem;
 }
+.paint3 {
+  margin-left: 12rem;
+  float: left;
+}
 .img {
-  border: 0.2rem solid rgb(105, 104, 104);
   width: 11rem;
   height: 11rem;
   margin-bottom: 1rem;
@@ -53,6 +59,7 @@
   width: 7rem;
 }
 .answer {
+  height: 2rem;
   color: #5c5a5a;
 }
 .img2 {
@@ -106,4 +113,8 @@
 }
 .quit_img {
   width: 3rem;
+}
+.reco {
+  color: rgb(92, 91, 91);
+  font-size: 1rem;
 }

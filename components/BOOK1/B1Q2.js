@@ -1,7 +1,36 @@
 import "../css/B1Q2.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 const B1Q2 = () => {
+  const [count, setCount] = useState("0회");
+
+  useEffect(() => {
+    window.addEventListener(
+      "message",
+      e => {
+        if (e.data.message) {
+          console.log(e.data.message);
+          if (e.data.message == "fail") {
+            setCount("실패");
+          } else {
+            setCount(e.data.message + "회");
+          }
+
+          console.log(count);
+        }
+      },
+      false
+    );
+  }, []);
+
+  const iframePart = () => {
+    return {
+      __html: '<iframe src="./squat.html" width="100%" height="100%"></iframe>'
+    };
+  };
   const navigate = useNavigate();
+
   return (
     <div className="B1Q2">
       <div>
@@ -24,10 +53,22 @@ const B1Q2 = () => {
             토끼는 날렵하고 빠른 동물로 유명하죠? <br />
             토끼를 돕기 위해 준비운동으로 스쿼트 10회를 해볼까요?
           </p>
-          <div className="cam"></div>
-          <div className="ex"></div>
-
-          <div className="count">7회</div>
+          {/*<div className="cam" dangerouslySetInnerHTML={iframePart()} />*/}
+          <div className="cam">
+            <iframe
+              src="http://127.0.0.1:5500/src/components/BOOK1/squat.html"
+              width="100%"
+              height="100%"
+              allow="camera;microphone"
+            ></iframe>
+          </div>
+          <div className="ex">
+            <img className="ex_img" src={require("../img/squat.png")} />
+          </div>
+          {/*<button type="button" onClick={init}>
+            Start
+          </button>*/}
+          <div className="count">{count}</div>
         </div>
       </div>
     </div>

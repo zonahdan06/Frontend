@@ -19,6 +19,7 @@ import Save from "./components/BOOK1/Save";
 import End from "./components/BOOK1/End";
 import SignUp from "./components/SignUpPage/SignUp";
 import MyPage from "./components/MyPage/MyPage";
+import B1Q1_R from "./components/BOOK1/B1Q1_R";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/end" element={<End />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/B1Q1_R" element={<B1Q1_R />} />
         </Routes>
       </div>
     </BrowserRouter>

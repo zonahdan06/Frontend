@@ -1,13 +1,61 @@
 import "../css/B1Q1.css";
+import Q3 from "./sounds/B1Q3.mp3";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSpeechRecognition } from "react-speech-kit";
 const B1Q3 = () => {
+  const useAudio = url => {
+    const [audio] = useState(new Audio(url));
+    const [playing, setPlaying] = useState(false);
+
+    const toggle = () => setPlaying(!playing);
+
+    useEffect(() => {
+      playing ? audio.play() : audio.pause();
+    }, [playing]);
+
+    useEffect(() => {
+      audio.addEventListener("ended", () => setPlaying(false));
+      return () => {
+        audio.removeEventListener("ended", () => setPlaying(false));
+      };
+    }, []);
+
+    return [audio, playing, toggle];
+  };
   const navigate = useNavigate();
+  const [audio, playing, toggle] = useAudio(Q3);
+  const [value, setValue] = useState("");
+  const { listen, listening, stop } = useSpeechRecognition({
+    onResult: result => {
+      // 음성인식 결과가 value 상태값으로 할당됩니다.
+      setValue(result);
+    }
+  });
+  useEffect(() => {
+    toggle();
+  }, []);
+  useEffect(() => {
+    console.log(playing);
+    if (!playing) {
+      listen({ interimResults: false });
+    }
+  }, [playing]);
+  useEffect(() => {
+    if (value.includes("빵빵")) {
+      console.log("빵빵");
+    } else if (value.includes("콩콩")) {
+      console.log("콩콩");
+    } else {
+    }
+  }, [value]);
   return (
     <div className="B1Q1">
       <div>
         <div
           className="quit"
           onClick={() => {
+            audio.pause();
             navigate("/Save", { state: { page: "B1Q3" } });
           }}
         >
@@ -48,7 +96,9 @@ const B1Q3 = () => {
               src={require("../img/micro.png")}
             />
           </div>
-          <div className="answer">콩콩</div>
+          <div className="answer">{value}</div>
+
+          {listening && <div>음성인식 활성화 중</div>}
         </div>
       </div>
     </div>
