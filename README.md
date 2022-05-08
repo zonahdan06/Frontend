@@ -1,4 +1,7 @@
 # Frontend
+![](https://velog.velcdn.com/images/yeah7598/post/8ecc6f8a-e72c-42b0-b4f6-73e5f7ac31d7/image.jpg)
+
+
 1. _actions,_reducers: 상태관리 라이브러리인 리덕스 관련 폴더
  * _actions - user_action.js에서 node.js 서버와 연결하여 테스트함
 
@@ -14,4 +17,4 @@
 4. setupProxy.js : 서버와 연결시 포트 주소가 다를 경우 충돌을 막기 위한 페이지
 
 
-![](https://velog.velcdn.com/images/yeah7598/post/14eb95ff-0ebf-4c8e-970c-e9aed398ab7b/image.jpg)
+
