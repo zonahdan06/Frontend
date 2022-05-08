@@ -14,4 +14,4 @@
 4. setupProxy.js : 서버와 연결시 포트 주소가 다를 경우 충돌을 막기 위한 페이지
 
 
-https://velog.velcdn.com/images/yeah7598/post/14eb95ff-0ebf-4c8e-970c-e9aed398ab7b/image.jpg
+![](https://velog.velcdn.com/images/yeah7598/post/14eb95ff-0ebf-4c8e-970c-e9aed398ab7b/image.jpg)
